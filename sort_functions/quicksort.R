@@ -1,4 +1,4 @@
-#https://www.geeksforgeeks.org/types-of-sorting-algorithm-in-r-programming/
+# function to sort the values
 quickSort <- function(arr) {
   
   # Pick a number at random
