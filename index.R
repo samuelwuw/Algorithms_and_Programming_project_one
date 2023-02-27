@@ -41,28 +41,23 @@ thirdSample_decreasing <- sort(thirdSample, decreasing = TRUE)
 ################################################################################
 
 results_first_sample <- data.frame(
-  bubble,
-  insertion,
-  selection, 
-  merge,
-  quick
+  matrix(nrow = 3, ncol = 5)
 )
+columns = c("bubble","insertion","selection", "merg", "quick") 
+colnames(results_first_sample) = columns
 
 results_second_sample <- data.frame(
-  bubble,
-  insertion,
-  selection, 
-  merge,
-  quick
+  matrix(nrow = 3, ncol = 5)
 )
+columns = c("bubble","insertion","selection", "merg", "quick") 
+colnames(results_second_sample) = columns
+
 
 results_third_sample <- data.frame(
-  bubble,
-  insertion,
-  selection, 
-  merge,
-  quick
+  matrix(nrow = 3, ncol = 5)
 )
+columns = c("bubble","insertion","selection", "merg", "quick") 
+colnames(results_third_sample) = columns
 
 ################################################################################
 ########################### USE OF BUBBLESORT ##################################
