@@ -36,3 +36,314 @@ thirdSample_increasing <- sort(thirdSample, decreasing = FALSE)
 thirdSample_decreasing <- sort(thirdSample, decreasing = TRUE)
 
 
+################################################################################
+########################## CREATE RESULT DATAFRAME #############################
+################################################################################
+
+results_first_sample <- data.frame(
+  bubble,
+  insertion,
+  selection, 
+  merge,
+  quick
+)
+
+results_second_sample <- data.frame(
+  bubble,
+  insertion,
+  selection, 
+  merge,
+  quick
+)
+
+results_third_sample <- data.frame(
+  bubble,
+  insertion,
+  selection, 
+  merge,
+  quick
+)
+
+################################################################################
+########################### USE OF BUBBLESORT ##################################
+################################################################################
+
+####################################################################first sample
+start_time <- Sys.time()
+bubble_sort(firstSample)
+end_time <- Sys.time()
+results_first_sample[1, 1] <- end_time - start_time
+
+start_time <- Sys.time()
+bubble_sort(firstSample_increasing)
+end_time <- Sys.time()
+results_first_sample[2, 1] <- end_time - start_time
+
+start_time <- Sys.time()
+bubble_sort(firstSample_decreasing)
+end_time <- Sys.time()
+results_first_sample[3, 1] <- end_time - start_time
+
+###################################################################second sample
+start_time <- Sys.time()
+bubble_sort(secondSample)
+end_time <- Sys.time()
+results_second_sample <- end_time - start_time
+
+start_time <- Sys.time()
+bubble_sort(secondSample_increasing)
+end_time <- Sys.time()
+results_second_sample[2, 1] <- end_time - start_time
+
+start_time <- Sys.time()
+bubble_sort(secondSample_decreasing)
+end_time <- Sys.time()
+results_second_sample[3, 1] <- end_time - start_time
+
+####################################################################third sample
+start_time <- Sys.time()
+bubble_sort(thirdSample)
+end_time <- Sys.time()
+results_third_sample[1, 1] <- end_time - start_time
+
+start_time <- Sys.time()
+bubble_sort(thirdSample_increasing)
+end_time <- Sys.time()
+results_third_sample[2, 1] <- end_time - start_time
+
+start_time <- Sys.time()
+bubble_sort(thirdSample_decreasing)
+end_time <- Sys.time()
+results_third_sample[3, 1] <- end_time - start_time
+
+################################################################################
+########################### USE OF INSERTION SORT ##############################
+################################################################################
+
+start_time <- Sys.time()
+insertion_sort(firstSample)
+end_time <- Sys.time()
+results_first_sample[1, 2] <- end_time - start_time
+
+start_time <- Sys.time()
+insertion_sort(firstSample_increasing)
+end_time <- Sys.time()
+results_first_sample[2, 2] <- end_time - start_time
+
+start_time <- Sys.time()
+insertion_sort(firstSample_decreasing)
+end_time <- Sys.time()
+results_first_sample[3, 2] <- end_time - start_time
+
+###################################################################second sample
+
+start_time <- Sys.time()
+insertion_sort(secondSample)
+end_time <- Sys.time()
+results_second_sample[1, 2] <- end_time - start_time
+
+start_time <- Sys.time()
+insertion_sort(secondSample_increasing)
+end_time <- Sys.time()
+results_second_sample[2, 2] <- end_time - start_time
+
+start_time <- Sys.time()
+insertion_sort(secondSample_decreasing)
+end_time <- Sys.time()
+results_second_sample[3, 2] <- end_time - start_time
+
+####################################################################third sample
+
+start_time <- Sys.time()
+insertion_sort(thirdSample)
+end_time <- Sys.time()
+results_third_sample[1, 2] <- end_time - start_time
+
+start_time <- Sys.time()
+insertion_sort(thirdSample_increasing)
+end_time <- Sys.time()
+results_third_sample[2, 2] <- end_time - start_time
+
+start_time <- Sys.time()
+insertion_sort(thirdSample_decreasing)
+end_time <- Sys.time()
+results_third_sample[3, 2] <- end_time - start_time
+
+
+################################################################################
+########################### USE OF SELECTION SORT ##############################
+################################################################################
+
+start_time <- Sys.time()
+selection_sort(firstSample)
+end_time <- Sys.time()
+results_first_sample[1, 3] <- end_time - start_time
+
+start_time <- Sys.time()
+selection_sort(firstSample_increasing)
+end_time <- Sys.time()
+results_first_sample[2, 3] <- end_time - start_time
+
+start_time <- Sys.time()
+selection_sort(firstSample_decreasing)
+end_time <- Sys.time()
+results_first_sample[3, 3] <- end_time - start_time
+
+###################################################################second sample
+
+start_time <- Sys.time()
+selection_sort(secondSample)
+end_time <- Sys.time()
+results_second_sample[1, 3] <- end_time - start_time
+
+start_time <- Sys.time()
+selection_sort(secondSample_increasing)
+end_time <- Sys.time()
+results_second_sample[2, 3] <- end_time - start_time
+
+start_time <- Sys.time()
+selection_sort(secondSample_decreasing)
+end_time <- Sys.time()
+results_second_sample[3, 3] <- end_time - start_time
+####################################################################third sample
+
+start_time <- Sys.time()
+selection_sort(thirdSample)
+end_time <- Sys.time()
+results_third_sample[1, 3] <- end_time - start_time
+
+start_time <- Sys.time()
+selection_sort(thirdSample_increasing)
+end_time <- Sys.time()
+results_third_sample[2, 3] <- end_time - start_time
+
+start_time <- Sys.time()
+selection_sort(thirdSample_decreasing)
+end_time <- Sys.time()
+results_third_sample[3, 3] <- end_time - start_time
+
+
+################################################################################
+########################### USE OF MERGE SORT ##################################
+################################################################################
+
+start_time <- Sys.time()
+mergeSort(firstSample)
+end_time <- Sys.time()
+results_first_sample[1, 4] <- end_time - start_time
+
+start_time <- Sys.time()
+mergeSort(firstSample_increasing)
+end_time <- Sys.time()
+results_first_sample[2, 4] <- end_time - start_time
+
+start_time <- Sys.time()
+mergeSort(firstSample_decreasing)
+end_time <- Sys.time()
+results_first_sample[3, 4] <- end_time - start_time
+
+###################################################################second sample
+
+start_time <- Sys.time()
+mergeSort(secondSample)
+end_time <- Sys.time()
+results_second_sample[1, 4] <- end_time - start_time
+
+start_time <- Sys.time()
+mergeSort(secondSample_increasing)
+end_time <- Sys.time()
+results_second_sample[2, 4] <- end_time - start_time
+
+start_time <- Sys.time()
+mergeSort(secondSample_decreasing)
+end_time <- Sys.time()
+results_second_sample[3, 4] <- end_time - start_time
+####################################################################third sample
+
+start_time <- Sys.time()
+mergeSort(firstSample)
+end_time <- Sys.time()
+results_third_sample[1, 4] <- end_time - start_time
+
+start_time <- Sys.time()
+mergeSort(secondSample_increasing)
+end_time <- Sys.time()
+results_third_sample[2, 4] <- end_time - start_time
+
+start_time <- Sys.time()
+mergeSort(secondSample_decreasing)
+end_time <- Sys.time()
+results_third_sample[3, 4] <- end_time - start_time
+
+
+################################################################################
+########################### USE OF QUICK SORT ##################################
+################################################################################
+
+
+start_time <- Sys.time()
+quickSort(firstSample)
+end_time <- Sys.time()
+results_first_sample[1, 5] <- end_time - start_time
+
+start_time <- Sys.time()
+quickSort(firstSample_increasing)
+end_time <- Sys.time()
+results_first_sample[2, 5] <- end_time - start_time
+
+start_time <- Sys.time()
+quickSort(firstSample_decreasing)
+end_time <- Sys.time()
+results_first_sample[3, 5] <- end_time - start_time
+
+###################################################################second sample
+
+start_time <- Sys.time()
+quickSort(secondSample)
+end_time <- Sys.time()
+results_second_sample[1, 5] <- end_time - start_time
+
+start_time <- Sys.time()
+quickSort(secondSample_increasing)
+end_time <- Sys.time()
+results_second_sample[2, 5] <- end_time - start_time
+
+start_time <- Sys.time()
+quickSort(secondSample_decreasing)
+end_time <- Sys.time()
+results_second_sample[3, 5] <- end_time - start_time
+####################################################################third sample
+
+start_time <- Sys.time()
+quickSort(thirdSample)
+end_time <- Sys.time()
+results_third_sample[1, 5] <- end_time - start_time
+
+start_time <- Sys.time()
+quickSort(thirdSample_increasing)
+end_time <- Sys.time()
+results_third_sample[2, 5] <- end_time - start_time
+
+start_time <- Sys.time()
+quickSort(thirdSample_decreasing)
+end_time <- Sys.time()
+results_third_sample[3, 5] <- end_time - start_time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
