@@ -1,5 +1,6 @@
 setwd("C:/Users/Samuel Willian/Documents/mestrado/algoritmos e programação/projeto1")
 
+library(tictoc)
 #import sort functions from other files
 source("sort_functions/bubblesort.R")
 source("sort_functions/insertionsort.R")
@@ -41,29 +42,15 @@ thirdSample_decreasing <- sort(thirdSample, decreasing = TRUE)
 ################################################################################
 
 columns = c("bubble","insertion","selection", "merg", "quick") 
-rows = c("random", "increasing", "decreasing")
+rows = c("1st sample random", "1st sample increasing", "1st sample decreasing",
+         "2nd sample random", "2nd sample increasing", "2nd sample decreasing",
+         "3rd sample (min) random", "3rd sample (min) increasing", "3rd sample (min) decreasing")
 
-results_first_sample <- data.frame(
-  matrix(nrow = 3, ncol = 5)
+results <- data.frame(
+  matrix(nrow = 9, ncol = 5)
 )
-colnames(results_first_sample) = columns
-rownames(results_first_sample) = rows
-
-results_second_sample <- data.frame(
-  matrix(nrow = 3, ncol = 5)
-)
-colnames(results_second_sample) = columns
-rownames(results_first_sample) = rows
-
-
-results_third_sample <- data.frame(
-  matrix(nrow = 3, ncol = 5)
-)
-colnames(results_third_sample) = columns
-rownames(results_first_sample) = rows
-
-####FORM 2
-
+colnames(results) = columns
+rownames(results) = rows
 
 ################################################################################
 ################################ function ######################################
@@ -73,109 +60,94 @@ func <- function(sortMethod, sample){
   start_time <- Sys.time()
   sortMethod(sample)
   end_time <- Sys.time()
-  return(end_time - start_time)
+  time <- end_time - start_time
+  print(time)
+  return(time)
 }
 
 ################################################################################
 ########################### USE OF BUBBLESORT ##################################
 ################################################################################
 
-####################################################################first sample
-results_first_sample[1, 1] <- func(bubble_sort, firstSample)
-results_first_sample[2, 1] <- func(bubble_sort, firstSample_increasing)
-results_first_sample[3, 1] <- func(bubble_sort, firstSample_decreasing)
+results[1, 1] <- func(bubble_sort, firstSample)
+results[2, 1] <- func(bubble_sort, firstSample_increasing)
+results[3, 1] <- func(bubble_sort, firstSample_decreasing)
 
-###################################################################second sample
-results_second_sample[1, 1] <- func(bubble_sort, secondSample)
-results_second_sample[2, 1] <- func(bubble_sort, secondSample_increasing)
-results_second_sample[3, 1] <- func(bubble_sort, secondSample_decreasing)
+results[4, 1] <- func(bubble_sort, secondSample)
+results[5, 1] <- func(bubble_sort, secondSample_increasing)
+results[6, 1] <- func(bubble_sort, secondSample_decreasing)
 
-####################################################################third sample
+results[7, 1] <- func(bubble_sort, thirdSample)
+results[8, 1] <- func(bubble_sort, thirdSample_increasing)
+results[9, 1] <- func(bubble_sort, thirdSample_decreasing)
 
-results_third_sample[1, 1] <- func(bubble_sort, thirdSample)
-results_third_sample[2, 1] <- func(bubble_sort, thirdSample_increasing)
-results_third_sample[3, 1] <- func(bubble_sort, thirdSample_decreasing)
+plot(results[,1])
 
 ################################################################################
 ########################### USE OF INSERTION SORT ##############################
 ################################################################################
 
-results_first_sample[1, 2] <- func(insertion_sort, firstSample)
-results_first_sample[2, 2] <- func(insertion_sort, firstSample_increasing)
-results_first_sample[3, 2] <- func(insertion_sort, firstSample_decreasing)
+results[1, 2] <- func(insertion_sort, firstSample)
+results[2, 2] <- func(insertion_sort, firstSample_increasing)
+results[3, 2] <- func(insertion_sort, firstSample_decreasing)
 
-###################################################################second sample
+results[4, 2] <- func(insertion_sort, secondSample)
+results[5, 2] <- func(insertion_sort, secondSample_increasing)
+results[6, 2] <- func(insertion_sort, secondSample_decreasing)
 
-results_second_sample[1, 2] <- func(insertion_sort, secondSample)
-results_second_sample[2, 2] <- func(insertion_sort, secondSample_increasing)
-results_second_sample[3, 2] <- func(insertion_sort, secondSample_decreasing)
-
-####################################################################third sample
-
-results_third_sample[1, 2] <- func(insertion_sort, thirdSample)
-results_third_sample[2, 2] <- func(insertion_sort, thirdSample_increasing)
-results_third_sample[3, 2] <- func(insertion_sort, thirdSample_decreasing)
+results[7, 2] <- func(insertion_sort, thirdSample)
+results[8, 2] <- func(insertion_sort, thirdSample_increasing)
+results[9, 2] <- func(insertion_sort, thirdSample_decreasing)
 
 
 ################################################################################
 ########################### USE OF SELECTION SORT ##############################
 ################################################################################
 
-results_first_sample[1, 3] <- func(selection_sort, firstSample)
-results_first_sample[2, 3] <- func(selection_sort, firstSample_increasing)
-results_first_sample[3, 3] <- func(selection_sort, firstSample_decreasing)
+results[1, 3] <- func(selection_sort, firstSample)
+results[2, 3] <- func(selection_sort, firstSample_increasing)
+results[3, 3] <- func(selection_sort, firstSample_decreasing)
 
-###################################################################second sample
+results[4, 3] <- func(selection_sort, secondSample)
+results[5, 3] <- func(selection_sort, secondSample_increasing)
+results[6, 3] <- func(selection_sort, secondSample_decreasing)
 
-results_second_sample[1, 3] <- func(selection_sort, secondSample)
-results_second_sample[2, 3] <- func(selection_sort, secondSample_increasing)
-results_second_sample[3, 3] <- func(selection_sort, secondSample_decreasing)
-
-####################################################################third sample
-
-results_third_sample[1, 3] <- func(selection_sort, thirdSample)
-results_third_sample[2, 3] <- func(selection_sort, thirdSample_increasing)
-results_third_sample[3, 3] <- func(selection_sort, thirdSample_decreasing)
+results[7, 3] <- func(selection_sort, thirdSample)
+results[8, 3] <- func(selection_sort, thirdSample_increasing)
+results[9, 3] <- func(selection_sort, thirdSample_decreasing)
 
 ################################################################################
 ########################### USE OF MERGE SORT ##################################
 ################################################################################
 
-results_first_sample[1, 4] <- func(mergeSort, firstSample)
-results_first_sample[2, 4] <- func(mergeSort, firstSample_increasing)
-results_first_sample[3, 4] <- func(mergeSort, firstSample_decreasing)
+results[1, 4] <- func(mergeSort, firstSample)
+results[2, 4] <- func(mergeSort, firstSample_increasing)
+results[3, 4] <- func(mergeSort, firstSample_decreasing)
 
-###################################################################second sample
+results[4, 4] <- func(mergeSort, secondSample)
+results[5, 4] <- func(mergeSort, secondSample_increasing)
+results[6, 4] <- func(mergeSort, secondSample_decreasing)
 
-results_second_sample[1, 4] <- func(mergeSort, secondSample)
-results_second_sample[2, 4] <- func(mergeSort, secondSample_increasing)
-results_second_sample[3, 4] <- func(mergeSort, secondSample_decreasing)
-####################################################################third sample
-
-results_third_sample[1, 4] <- func(mergeSort, thirdSample)
-results_third_sample[2, 4] <- func(mergeSort, thirdSample_increasing)
-results_third_sample[3, 4] <- func(mergeSort, thirdSample_decreasing)
-
+results[7, 4] <- func(mergeSort, thirdSample)
+results[8, 4] <- func(mergeSort, thirdSample_increasing)
+results[9, 4] <- func(mergeSort, thirdSample_decreasing)
 
 ################################################################################
 ########################### USE OF QUICK SORT ##################################
 ################################################################################
 
-results_first_sample[1, 5] <- func(quickSort, firstSample)
-results_first_sample[2, 5] <- func(quickSort, firstSample_increasing)
-results_first_sample[3, 5] <- func(quickSort, firstSample_decreasing)
+results[1, 5] <- func(quickSort, firstSample)
+results[2, 5] <- func(quickSort, firstSample_increasing)
+results[3, 5] <- func(quickSort, firstSample_decreasing)
 
-###################################################################second sample
+results[4, 5] <- func(quickSort, secondSample)
+results[5, 5] <- func(quickSort, secondSample_increasing)
+results[6, 5] <- func(quickSort, secondSample_decreasing)
 
-results_second_sample[1, 5] <- func(quickSort, secondSample)
-results_second_sample[2, 5] <- func(quickSort, secondSample_increasing)
-results_second_sample[3, 5] <- func(quickSort, secondSample_decreasing)
+results[7, 5] <- func(quickSort, thirdSample)
+results[8, 5] <- func(quickSort, thirdSample_increasing)
+results[9, 5] <- func(quickSort, thirdSample_decreasing)
 
-####################################################################third sample
-
-results_third_sample[1, 5] <- func(quickSort, thirdSample)
-results_third_sample[2, 5] <- func(quickSort, thirdSample_increasing)
-results_third_sample[3, 5] <- func(quickSort, thirdSample_decreasing)
 
 
 # 1 grafico p cada método com os 3 tempos
@@ -184,12 +156,10 @@ results_third_sample[3, 5] <- func(quickSort, thirdSample_decreasing)
 
 
 
+write.csv(results, file="results/results.csv", row.names=F)
 
-write.csv(results_first_sample, file="data/results_first_sample.csv", row.names=F)
 write.csv(results_second_sample, file="data/results_second_sample.csv", row.names=F)
 write.csv(results_third_sample, file="data/results_third_sample.csv", row.names=F)
-
-
 
 
 
