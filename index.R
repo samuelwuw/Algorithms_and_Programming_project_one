@@ -45,16 +45,18 @@ rows = c("1st sample random", "1st sample increasing", "1st sample decreasing",
          "2nd sample random", "2nd sample increasing", "2nd sample decreasing",
          "3rd sample (min) random", "3rd sample (min) increasing", "3rd sample (min) decreasing")
 
-rows_label = c("Minutes", "Seconds")
-
 results <- data.frame(
   matrix(nrow = 9, ncol = 5)
 )
+
+results[, 6] <- row() 
 colnames(results) = columns
 rownames(results) = rows
 
+rows_label = c("Minutes", "Seconds")
 results[,6] <- rows
-results[7:9,7] <- rows_filter[1]
+results[1:6, 7] <- rows_label[2]
+results[7:9, 7] <- rows_label[1]
 
 
 ################################################################################
@@ -164,7 +166,6 @@ write.csv(results, file="results/results.csv", row.names=F)
 
 results <-  as.data.frame(read.csv("results/results.csv", header=TRUE, stringsAsFactors=FALSE))
 
-results <- results[,1:5]
 results_round <- results
 
 for(i in 1:5){
