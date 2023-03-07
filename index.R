@@ -1,6 +1,5 @@
 setwd("C:/Users/Samuel Willian/Documents/mestrado/algoritmos e programação/projeto1")
 
-library(tictoc)
 #import sort functions from other files
 source("sort_functions/bubblesort.R")
 source("sort_functions/insertionsort.R")
@@ -165,46 +164,68 @@ write.csv(results, file="results/results.csv", row.names=F)
 
 results <-  as.data.frame(read.csv("results/results.csv", header=TRUE, stringsAsFactors=FALSE))
 
+results <- results[,1:5]
+results_round <- results
+
+for(i in 1:5){
+  for(j in 1:9){
+    results_round[j, i] <- format(round(results[j, i], 5), nsmall = 4)
+  }
+}
+
+results_round[, 6:7] <- results[, 6:7]
+
 ################################################################################
 ################################## PLOT ########################################
 ################################################################################
 
 
-install.packages("ggplot2")
 require(ggplot2)
 
 ##########################################################################BUBBLE
-p <- ggplot(results, aes(x=bubble, y = Database, color = Measure)) +
+p <- ggplot(results_round, aes(x=bubble, y = Database, color = Measure)) +
   geom_line(linetype = "dashed") + 
   geom_point(size = 3) +
-  geom_text(label=results$bubble, 
+  geom_text(label=results_round$bubble, 
             nudge_x = 0.25, nudge_y = 0.25, 
             check_overlap = T)
 p + ggtitle("Results for BubbleSort") + xlab("Execution Time") + ylab("Database")
 
 #######################################################################iNSERTION
-p <- ggplot(results, aes(x=insertion, y = Database, color = Measure)) +
+p <- ggplot(results_round, aes(x=insertion, y = Database, color = Measure)) +
   geom_line(linetype = "dashed") + 
-  geom_point(size = 3)
+  geom_point(size = 3) +
+  geom_text(label=results_round$insertion, 
+            nudge_x = 0.25, nudge_y = 0.25, 
+            check_overlap = T)
 p + ggtitle("Results for insertion") + xlab("Execution Time") + ylab("Database")
 
 #######################################################################selection
-p <- ggplot(results, aes(x=selection, y = Database, color = Measure)) +
+p <- ggplot(results_round, aes(x=selection, y = Database, color = Measure)) +
   geom_line(linetype = "dashed") + 
-  geom_point(size = 3)
+  geom_point(size = 3) +
+  geom_text(label=results_round$selection, 
+            nudge_x = 0.25, nudge_y = 0.25, 
+            check_overlap = T)
 p + ggtitle("Results for selection") + xlab("Execution Time") + ylab("Database")
 
 ##########################################################################merge
-p <- ggplot(results, aes(x=merg, y = Database, color = Measure)) +
+p <- ggplot(results_round, aes(x=merg, y = Database)) +
   geom_line(linetype = "dashed") + 
-  geom_point(size = 3)
-p + ggtitle("Results for merge") + xlab("Execution Time") + ylab("Database")
+  geom_point(size = 3) +
+  geom_text(label=results_round$merg, 
+            nudge_x = 0.25, nudge_y = 0.25, 
+            check_overlap = T)
+p + ggtitle("Results for merge") + xlab("Execution Time (in seconds)") + ylab("Database")
 
 ##########################################################################quick
-p <- ggplot(results, aes(x=quick, y = Database, color = Measure)) +
+p <- ggplot(results_round, aes(x=quick, y = Database)) +
   geom_line(linetype = "dashed") + 
-  geom_point(size = 3)
-p + ggtitle("Results for quick") + xlab("Execution Time") + ylab("Database")
+  geom_point(size = 3) +
+  geom_text(label=results_round$quick, 
+            nudge_x = 0.25, nudge_y = 0.25, 
+            check_overlap = T)
+p + ggtitle("Results for quick") + xlab("Execution Time (in seconds)") + ylab("Database")
  
 
 
