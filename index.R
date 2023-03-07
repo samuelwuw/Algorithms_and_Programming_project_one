@@ -41,16 +41,22 @@ thirdSample_decreasing <- sort(thirdSample, decreasing = TRUE)
 ########################## CREATE RESULT DATAFRAME #############################
 ################################################################################
 
-columns = c("bubble","insertion","selection", "merg", "quick") 
+columns = c("bubble","insertion","selection", "merg", "quick", "Database", "Measure") 
 rows = c("1st sample random", "1st sample increasing", "1st sample decreasing",
          "2nd sample random", "2nd sample increasing", "2nd sample decreasing",
          "3rd sample (min) random", "3rd sample (min) increasing", "3rd sample (min) decreasing")
+
+rows_label = c("Minutes", "Seconds")
 
 results <- data.frame(
   matrix(nrow = 9, ncol = 5)
 )
 colnames(results) = columns
 rownames(results) = rows
+
+results[,6] <- rows
+results[7:9,7] <- rows_filter[1]
+
 
 ################################################################################
 ################################ function ######################################
@@ -148,7 +154,8 @@ results[7, 5] <- func(quickSort, thirdSample)
 results[8, 5] <- func(quickSort, thirdSample_increasing)
 results[9, 5] <- func(quickSort, thirdSample_decreasing)
 
-
+#######################################################################exports
+write.csv(results, file="results/results.csv", row.names=F)
 
 # 1 grafico p cada método com os 3 tempos
 # 1 gráfico p cada tipo de ordenação com os 5 métodos
@@ -156,10 +163,58 @@ results[9, 5] <- func(quickSort, thirdSample_decreasing)
 
 
 
-write.csv(results, file="results/results.csv", row.names=F)
+results <-  as.data.frame(read.csv("results/results.csv", header=TRUE, stringsAsFactors=FALSE))
 
-write.csv(results_second_sample, file="data/results_second_sample.csv", row.names=F)
-write.csv(results_third_sample, file="data/results_third_sample.csv", row.names=F)
+################################################################################
+################################## PLOT ########################################
+################################################################################
+
+
+install.packages("ggplot2")
+require(ggplot2)
+
+##########################################################################BUBBLE
+p <- ggplot(results, aes(x=bubble, y = Database, color = Measure)) +
+  geom_line(linetype = "dashed") + 
+  geom_point(size = 3) +
+  geom_text(label=results$bubble, 
+            nudge_x = 0.25, nudge_y = 0.25, 
+            check_overlap = T)
+p + ggtitle("Results for BubbleSort") + xlab("Execution Time") + ylab("Database")
+
+#######################################################################iNSERTION
+p <- ggplot(results, aes(x=insertion, y = Database, color = Measure)) +
+  geom_line(linetype = "dashed") + 
+  geom_point(size = 3)
+p + ggtitle("Results for insertion") + xlab("Execution Time") + ylab("Database")
+
+#######################################################################selection
+p <- ggplot(results, aes(x=selection, y = Database, color = Measure)) +
+  geom_line(linetype = "dashed") + 
+  geom_point(size = 3)
+p + ggtitle("Results for selection") + xlab("Execution Time") + ylab("Database")
+
+##########################################################################merge
+p <- ggplot(results, aes(x=merg, y = Database, color = Measure)) +
+  geom_line(linetype = "dashed") + 
+  geom_point(size = 3)
+p + ggtitle("Results for merge") + xlab("Execution Time") + ylab("Database")
+
+##########################################################################quick
+p <- ggplot(results, aes(x=quick, y = Database, color = Measure)) +
+  geom_line(linetype = "dashed") + 
+  geom_point(size = 3)
+p + ggtitle("Results for quick") + xlab("Execution Time") + ylab("Database")
+ 
+
+
+
+
+
+
+
+
+
 
 
 
